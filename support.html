@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support | Block Blast Game</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .gradient-animate { 
+            background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #f5576c);
+            background-size: 400% 400%;
+            animation: gradient-shift 4s ease infinite;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Header -->
+    <header class="bg-white/95 backdrop-blur-sm shadow-xl sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <nav class="flex justify-between items-center">
+                <a href="index.html" class="text-3xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+                    🎮 Block Zone
+                </a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-purple-600 transition duration-300 font-semibold">Back to Game</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-12">
+        <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-md overflow-hidden">
+            <div class="gradient-animate py-6 px-6 text-center">
+                <h1 class="text-3xl md:text-4xl font-bold text-white">Support Center</h1>
+                <p class="text-white/80 mt-2">We're here to help you enjoy Block Blast!</p>
+            </div>
+            
+            <div class="p-8 md:p-12">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6">Frequently Asked Questions</h2>
+                
+                <div class="space-y-6">
+                    <div class="border-b border-gray-200 pb-4">
+                        <h3 class="text-xl font-semibold text-purple-600 mb-2">How do I play Block Blast?</h3>
+                        <p class="text-gray-600">
+                            Block Blast is a color-matching puzzle game. To play, simply click on groups of 2 or more adjacent blocks of the same color. These blocks will disappear, and the blocks above will fall down to fill the empty spaces. Your goal is to reach the target score for each level before running out of moves.
+                        </p>
+                    </div>
+                    
+                    <div class="border-b border-gray-200 pb-4">
+                        <h3 class="text-xl font-semibold text-purple-600 mb-2">How do I advance to the next level?</h3>
+                        <p class="text-gray-600">
+                            To advance to the next level, you need to reach the target score displayed at the top of the game screen. Once you reach this score, you'll automatically progress to the next level with a new, higher target score.
+                        </p>
+                    </div>
+                    
+                    <div class="border-b border-gray-200 pb-4">
+                        <h3 class="text-xl font-semibold text-purple-600 mb-2">Why is the game getting harder?</h3>
+                        <p class="text-gray-600">
+                            Each level introduces progressively more challenging gameplay. The target scores increase, and at higher levels, new block colors are introduced (pink at level 3, teal at level 5). This makes the game more challenging and engaging as you progress!
+                        </p>
+                    </div>
+                    
+                    <div class="border-b border-gray-200 pb-4">
+                        <h3 class="text-xl font-semibold text-purple-600 mb-2">Does Block Blast save my progress?</h3>
+                        <p class="text-gray-600">
+                            Yes, Block Blast saves your highest level reached using your browser's session storage. This means your progress will be saved as long as you don't clear your browser data or use private browsing mode. If you close your browser and return later, you'll be able to continue from your highest unlocked level.
+                        </p>
+                    </div>
+                    
+                    <div class="border-b border-gray-200 pb-4">
+                        <h3 class="text-xl font-semibold text-purple-600 mb-2">The game isn't working properly on my device. What should I do?</h3>
+                        <p class="text-gray-600">
+                            If you're experiencing technical issues with Block Blast, try these troubleshooting steps:
+                        </p>
+                        <ul class="list-disc pl-8 text-gray-600 mt-2 space-y-1">
+                            <li>Refresh your browser page</li>
+                            <li>Clear your browser cache and cookies</li>
+                            <li>Try a different web browser (Chrome, Firefox, Safari, etc.)</li>
+                            <li>Ensure your browser is updated to the latest version</li>
+                            <li>Check your internet connection</li>
+                        </ul>
+                        <p class="text-gray-600 mt-2">
+                            If you're still experiencing issues, please contact us using the information below.
+                        </p>
+                    </div>
+                </div>
+                
+                <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-6">Contact Us</h2>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-purple-600 mb-4">Email Support</h3>
+                        <p class="text-gray-600 mb-4">For general inquiries and support:</p>
+                        <a href="mailto:support@blockzone.com" class="text-blue-600 hover:underline font-medium">support@blockzone.com</a>
+                        <p class="text-gray-600 mt-4">We typically respond within 24-48 hours.</p>
+                    </div>
+                    
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-purple-600 mb-4">Business Inquiries</h3>
+                        <p class="text-gray-600 mb-4">For partnerships and business opportunities:</p>
+                        <a href="mailto:business@blockzone.com" class="text-blue-600 hover:underline font-medium">business@blockzone.com</a>
+                    </div>
+                </div>
+                
+                <div class="mt-10 bg-purple-50 p-6 rounded-lg">
+                    <h3 class="text-xl font-semibold text-purple-600 mb-4">Connect With Us</h3>
+                    <p class="text-gray-600 mb-4">Follow us on social media for updates, tips, and to join our gaming community:</p>
+                    <div class="flex space-x-6">
+                        <a href="#" class="text-blue-600 hover:text-blue-800 transition duration-300">
+                            <span class="text-2xl">📘</span> Facebook
+                        </a>
+                        <a href="#" class="text-blue-400 hover:text-blue-600 transition duration-300">
+                            <span class="text-2xl">🐦</span> Twitter
+                        </a>
+                        <a href="#" class="text-pink-600 hover:text-pink-800 transition duration-300">
+                            <span class="text-2xl">📷</span> Instagram
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 mt-12">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-gray-400 mb-4">© 2024 Block Zone. All rights reserved.</p>
+            <div class="flex justify-center space-x-4 md:space-x-8 flex-wrap">
+                <a href="privacy-policy.html" class="text-gray-400 hover:text-white transition duration-300 text-sm py-2">Privacy Policy</a>
+                <a href="terms-of-service.html" class="text-gray-400 hover:text-white transition duration-300 text-sm py-2">Terms of Service</a>
+                <a href="support.html" class="text-gray-400 hover:text-white transition duration-300 text-sm py-2">Support</a>
+                <a href="index.html" class="text-gray-400 hover:text-white transition duration-300 text-sm py-2">Back to Game</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
