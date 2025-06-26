@@ -25,12 +25,14 @@
 
         body {
             font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #a755f7 0%, #9333ea 100%); /* Using purple gradient similar to index.html */
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             overflow: hidden;
+            margin: 0;
+            padding: 0;
         }
 
         .game-container {
@@ -38,7 +40,7 @@
             height: 100vh;
             display: flex;
             flex-direction: column;
-            background: rgba(255, 255, 255, 0.95);
+            background-color: transparent; /* Remove white background */
             position: relative;
         }
 
@@ -50,6 +52,7 @@
             height: 100%;
             text-align: center;
             padding: 20px;
+            background-color: transparent; /* Make background transparent */
         }
 
         .game-title {
@@ -60,7 +63,7 @@
         }
 
         .rules {
-            background: white;
+            background: rgba(255, 255, 255, 0.95);
             padding: 25px;
             border-radius: 15px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
@@ -105,6 +108,7 @@
             display: none;
             height: 100%;
             flex-direction: column;
+            background-color: transparent; /* Keep game screen transparent */
         }
 
         .game-header {
@@ -144,6 +148,11 @@
             gap: 2px;
             padding: 10px;
             background: #2d3748;
+            max-width: 100%;
+            max-height: calc(100vh - 80px); /* Account for header height */
+            margin: 0 auto;
+            box-sizing: border-box;
+            border-radius: 0 0 8px 8px; /* Round corners at the bottom */
         }
 
         .block {
@@ -156,7 +165,13 @@
             font-weight: bold;
             color: white;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
-            aspect-ratio: 1/1; /* Fix for mobile devices */
+            aspect-ratio: 1/1;
+            width: 100%;
+            height: 100%;
+            max-width: 100%;
+            max-height: 100%;
+            box-sizing: border-box;
+            overflow: hidden;
         }
 
         .block:hover {
@@ -331,6 +346,12 @@
             .game-board {
                 gap: 1px;
                 padding: 5px;
+                max-width: calc(100vw - 10px);
+                max-height: calc(100vh - 100px);
+            }
+
+            .block {
+                border-radius: 4px;
             }
 
             .rules {
@@ -345,6 +366,14 @@
             .next-level-btn, .replay-level-btn {
                 padding: 12px 25px;
                 font-size: 1rem;
+            }
+
+            .target-container {
+                margin-left: 10px;
+            }
+
+            .level-target {
+                margin: 0 10px;
             }
         }
 
@@ -526,6 +555,9 @@
                         gameBoard.appendChild(block);
                     }
                 }
+                
+                // Adjust board size after rendering
+                setTimeout(adjustGameBoardSize, 10);
             }
 
             handleBlockClick(row, col) {
@@ -708,12 +740,7 @@
 
         const game = new BlockGame();
 
-        function startGame() {
-            document.getElementById('startScreen').style.display = 'none';
-            document.getElementById('gameScreen').style.display = 'flex';
-            game.updateDifficulty();
-            game.initBoard();
-        }
+
 
         function restartGame() {
             game.restart();
@@ -740,13 +767,53 @@
             }
         });
 
+        // Function to adjust game board size
+        function adjustGameBoardSize() {
+            const gameBoard = document.getElementById('gameBoard');
+            const gameContainer = document.querySelector('.game-container');
+            const header = document.querySelector('.game-header');
+            
+            if (!gameBoard || !gameContainer || !header) return;
+            
+            const containerWidth = gameContainer.clientWidth;
+            const containerHeight = gameContainer.clientHeight;
+            const headerHeight = header.offsetHeight;
+            
+            // Calculate available space
+            const availableWidth = containerWidth - 20; // Account for padding
+            const availableHeight = containerHeight - headerHeight - 20; // Account for header and padding
+            
+            // Calculate optimal size based on 10x8 grid
+            const blockSizeFromWidth = Math.floor((availableWidth - 9 * 2) / 10); // 9 gaps of 2px each
+            const blockSizeFromHeight = Math.floor((availableHeight - 7 * 2) / 8); // 7 gaps of 2px each
+            
+            // Use the smaller value to ensure everything fits
+            // Min 20px to ensure blocks are clickable, max 60px to maintain good appearance
+            const blockSize = Math.max(20, Math.min(blockSizeFromWidth, blockSizeFromHeight, 60));
+            
+            // Set board dimensions
+            const totalWidth = (blockSize * 10) + (9 * 2) + 20; // blocks + gaps + padding
+            const totalHeight = (blockSize * 8) + (7 * 2) + 20; // blocks + gaps + padding
+            
+            gameBoard.style.width = totalWidth + 'px';
+            gameBoard.style.height = totalHeight + 'px';
+            gameBoard.style.gridTemplateColumns = `repeat(10, ${blockSize}px)`;
+            gameBoard.style.gridTemplateRows = `repeat(8, ${blockSize}px)`;
+        }
+
         // Handle resize events to maintain block aspect ratio
-        window.addEventListener('resize', () => {
-            // Force redraw of the board to maintain aspect ratio
-            if (document.getElementById('gameScreen').style.display === 'flex') {
-                game.renderBoard();
-            }
-        });
+        window.addEventListener('resize', adjustGameBoardSize);
+        window.addEventListener('load', adjustGameBoardSize);
+        
+        // Also adjust when game starts
+        function startGame() {
+            document.getElementById('startScreen').style.display = 'none';
+            document.getElementById('gameScreen').style.display = 'flex';
+            game.updateDifficulty();
+            game.initBoard();
+            // Add small delay to ensure layout is complete
+            setTimeout(adjustGameBoardSize, 50);
+        }
     </script>
 
     <!-- Structured Data for SEO -->
