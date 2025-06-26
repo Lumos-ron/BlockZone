@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Block Blast - Free Color Matching Puzzle Game | Play Now</title>
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Play Block Blast for free - an addictive color-matching puzzle game. Match adjacent blocks of the same color to clear levels and earn high scores. No download required!">
+    <meta name="keywords" content="block blast, free game, color matching game, free online game, puzzle game, block elimination, block puzzle">
+    <meta name="author" content="Block Zone Games">
+    <!-- Open Graph / Social Media Tags -->
+    <meta property="og:title" content="Block Blast - Free Color Matching Puzzle Game">
+    <meta property="og:description" content="Match blocks, clear levels, beat high scores in this addictive free puzzle game!">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://blockblast.com/game.html">
+    <meta property="og:image" content="https://blockblast.com/images/block-blast-preview.jpg">
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://blockblast.com/game.html">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .game-container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background: rgba(255, 255, 255, 0.95);
+            position: relative;
+        }
+
+        .start-screen {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .game-title {
+            font-size: 3rem;
+            color: #4a5568;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .rules {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            max-width: 500px;
+        }
+
+        .rules h3 {
+            color: #2d3748;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .rules ul {
+            text-align: left;
+            color: #4a5568;
+            line-height: 1.6;
+        }
+
+        .rules li {
+            margin-bottom: 8px;
+        }
+
+        .start-btn {
+            background: linear-gradient(45deg, #48bb78, #38a169);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.3rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(72, 187, 120, 0.4);
+        }
+
+        .start-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(72, 187, 120, 0.6);
+        }
+
+        .game-screen {
+            display: none;
+            height: 100%;
+            flex-direction: column;
+        }
+
+        .game-header {
+            background: #2d3748;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .score-moves {
+            display: flex;
+            gap: 20px;
+            font-size: 1.1rem;
+        }
+
+        .restart-btn {
+            background: #e53e3e;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .restart-btn:hover {
+            background: #c53030;
+        }
+
+        .game-board {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            grid-template-rows: repeat(8, 1fr);
+            gap: 2px;
+            padding: 10px;
+            background: #2d3748;
+        }
+
+        .block {
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            aspect-ratio: 1/1; /* Fix for mobile devices */
+        }
+
+        .block:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .block.red { background: linear-gradient(45deg, #e53e3e, #c53030); }
+        .block.blue { background: linear-gradient(45deg, #3182ce, #2c5282); }
+        .block.green { background: linear-gradient(45deg, #48bb78, #38a169); }
+        .block.yellow { background: linear-gradient(45deg, #ecc94b, #d69e2e); }
+        .block.purple { background: linear-gradient(45deg, #9f7aea, #805ad5); }
+        .block.orange { background: linear-gradient(45deg, #ed8936, #dd6b20); }
+        .block.pink { background: linear-gradient(45deg, #ed64a6, #d53f8c); }
+        .block.teal { background: linear-gradient(45deg, #38b2ac, #2c7a7b); }
+
+        .block.selected {
+            animation: pulse 0.5s infinite alternate;
+        }
+
+        @keyframes pulse {
+            from { transform: scale(1); }
+            to { transform: scale(1.1); }
+        }
+
+        .game-over {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .game-over h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .final-score {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+        }
+
+        .level-complete {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .level-complete h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #fbbf24;
+            text-shadow: 0 0 10px rgba(251, 191, 36, 0.6);
+        }
+
+        .level-stats {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+        }
+
+        .level-score {
+            margin-top: 10px;
+            font-size: 2rem;
+            color: #48bb78;
+        }
+
+        .level-buttons {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .next-level-btn {
+            background: linear-gradient(45deg, #48bb78, #38a169);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .next-level-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(72, 187, 120, 0.4);
+        }
+
+        .replay-level-btn {
+            background: linear-gradient(45deg, #4299e1, #3182ce);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .replay-level-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(66, 153, 225, 0.4);
+        }
+
+        .level-failed {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .level-failed h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #ef4444;
+            text-shadow: 0 0 10px rgba(239, 68, 68, 0.6);
+        }
+
+        .failed-message {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+        }
+
+        .level-badge {
+            background: linear-gradient(45deg, #6b46c1, #4c1d95);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        @media screen and (max-width: 768px) {
+            .game-title {
+                font-size: 2.5rem;
+            }
+
+            .score-moves {
+                gap: 10px;
+                font-size: 0.9rem;
+                flex-wrap: wrap;
+            }
+
+            .game-board {
+                gap: 1px;
+                padding: 5px;
+            }
+
+            .rules {
+                padding: 15px;
+            }
+
+            .level-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .next-level-btn, .replay-level-btn {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+        }
+
+        /* Progress bar styles */
+        .level-target {
+            position: relative;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 5px;
+            margin: 0 15px;
+            flex-grow: 1;
+            overflow: hidden;
+        }
+
+        .level-progress {
+            position: absolute;
+            height: 100%;
+            background: linear-gradient(90deg, #fbbf24, #f59e0b);
+            border-radius: 5px;
+            transition: width 0.3s ease;
+        }
+
+        .target-container {
+            display: flex;
+            align-items: center;
+            margin-left: 20px;
+        }
+
+        .target-label {
+            white-space: nowrap;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <!-- Start Screen -->
+        <div class="start-screen" id="startScreen">
+            <h1 class="game-title">🎮 Block Blast</h1>
+            <div class="rules">
+                <h3>🎯 Game Rules</h3>
+                <ul>
+                    <li>Click on groups of 2 or more adjacent blocks of the same color</li>
+                    <li>Blocks will disappear and remaining blocks will fall down</li>
+                    <li>Complete each level by reaching the target score</li>
+                    <li>Levels get progressively more challenging</li>
+                    <li>Score points: more blocks = higher score (blocks² × 10)</li>
+                    <li>Game ends when no more valid moves or moves run out</li>
+                </ul>
+            </div>
+            <button class="start-btn" onclick="startGame()">🚀 Start Game</button>
+        </div>
+
+        <!-- Game Screen -->
+        <div class="game-screen" id="gameScreen">
+            <div class="game-header">
+                <div class="score-moves">
+                    <div>Level: <span id="level">1</span></div>
+                    <div>Score: <span id="score">0</span></div>
+                    <div>Moves: <span id="moves">30</span></div>
+                    <div class="target-container">
+                        <span class="target-label">Target:</span>
+                        <div class="level-target">
+                            <div class="level-progress" id="levelProgress"></div>
+                        </div>
+                        <span id="scoreTarget" style="margin-left: 5px">1000</span>
+                    </div>
+                </div>
+                <button class="restart-btn" onclick="restartGame()">🔄 Restart</button>
+            </div>
+            <div class="game-board" id="gameBoard"></div>
+        </div>
+
+        <!-- Game Over Screen -->
+        <div class="game-over" id="gameOver">
+            <h2>🎉 Game Over!</h2>
+            <div class="final-score">Final Score: <span id="finalScore">0</span></div>
+            <div class="final-score">Highest Level: <span id="finalLevel">1</span></div>
+            <button class="play-again-btn next-level-btn" onclick="playAgain()">🎮 Play Again</button>
+        </div>
+
+        <!-- Level Complete Screen -->
+        <div class="level-complete" id="levelComplete">
+            <h2>✨ Level Complete! ✨</h2>
+            <div class="level-stats">
+                Level <span id="completedLevel">1</span> Cleared!
+                <div class="level-score">Score: <span id="levelScore">0</span></div>
+            </div>
+            <div class="level-buttons">
+                <button class="next-level-btn" onclick="nextLevel()">🚀 Next Level</button>
+            </div>
+        </div>
+
+        <!-- Level Failed Screen -->
+        <div class="level-failed" id="levelFailed">
+            <h2>❌ Level Failed!</h2>
+            <div class="failed-message">
+                You didn't reach the target score.<br>
+                <div class="level-score">Your Score: <span id="failedScore">0</span> / <span id="failedTarget">1000</span></div>
+            </div>
+            <div class="level-buttons">
+                <button class="replay-level-btn" onclick="replayLevel()">🔄 Retry Level</button>
+                <button class="next-level-btn" onclick="restartGame()">🏁 Restart Game</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        class BlockGame {
+            constructor() {
+                this.board = [];
+                this.rows = 8;
+                this.cols = 10;
+                this.baseColors = ['red', 'blue', 'green', 'yellow', 'purple', 'orange'];
+                this.advancedColors = ['pink', 'teal'];
+                this.colors = [...this.baseColors];
+                this.score = 0;
+                this.totalScore = 0;
+                this.moves = 30;
+                this.baseMovesPerLevel = 30;
+                this.selectedBlocks = [];
+                this.level = 1;
+                this.targetScore = 1000; // Base target for level 1
+            }
+
+            // Calculate target score based on level
+            calculateTargetScore(level) {
+                // Progressively increase target score by 30% each level
+                return Math.round(1000 * Math.pow(1.3, level - 1));
+            }
+
+            // Calculate moves for each level (decrease slightly in higher levels)
+            calculateMoves(level) {
+                // Base moves minus small reduction for higher levels (min 15 moves)
+                return Math.max(15, this.baseMovesPerLevel - Math.floor(level / 3));
+            }
+
+            // Update difficulty based on level
+            updateDifficulty() {
+                this.targetScore = this.calculateTargetScore(this.level);
+                this.moves = this.calculateMoves(this.level);
+                
+                // Add more colors in higher levels
+                if (this.level >= 3 && this.colors.length === this.baseColors.length) {
+                    this.colors.push(this.advancedColors[0]); // Add pink at level 3
+                }
+                if (this.level >= 5 && this.colors.length === this.baseColors.length + 1) {
+                    this.colors.push(this.advancedColors[1]); // Add teal at level 5
+                }
+                
+                document.getElementById('scoreTarget').textContent = this.targetScore;
+                document.getElementById('level').textContent = this.level;
+                this.updateProgressBar();
+            }
+
+            initBoard() {
+                this.board = [];
+                for (let row = 0; row < this.rows; row++) {
+                    this.board[row] = [];
+                    for (let col = 0; col < this.cols; col++) {
+                        this.board[row][col] = this.colors[Math.floor(Math.random() * this.colors.length)];
+                    }
+                }
+                this.renderBoard();
+                this.updateUI();
+            }
+
+            renderBoard() {
+                const gameBoard = document.getElementById('gameBoard');
+                gameBoard.innerHTML = '';
+                
+                for (let row = 0; row < this.rows; row++) {
+                    for (let col = 0; col < this.cols; col++) {
+                        const block = document.createElement('div');
+                        block.className = `block ${this.board[row][col] || ''}`;
+                        block.dataset.row = row;
+                        block.dataset.col = col;
+                        block.addEventListener('click', () => this.handleBlockClick(row, col));
+                        gameBoard.appendChild(block);
+                    }
+                }
+            }
+
+            handleBlockClick(row, col) {
+                if (!this.board[row][col] || this.moves <= 0) return;
+
+                const connectedBlocks = this.findConnectedBlocks(row, col, this.board[row][col]);
+                
+                if (connectedBlocks.length >= 2) {
+                    this.eliminateBlocks(connectedBlocks);
+                    this.dropBlocks();
+                    this.moves--;
+                    
+                    // Calculate points for this move
+                    const points = connectedBlocks.length * connectedBlocks.length * 10;
+                    this.score += points;
+                    this.totalScore += points;
+                    
+                    this.renderBoard();
+                    this.updateUI();
+                    
+                    // Check if level completed
+                    if (this.score >= this.targetScore) {
+                        this.levelComplete();
+                    }
+                    // Check if level failed (no more moves)
+                    else if (this.moves <= 0 || !this.hasValidMoves()) {
+                        this.levelFailed();
+                    }
+                } else {
+                    this.showSelectedBlocks(connectedBlocks);
+                }
+            }
+
+            findConnectedBlocks(row, col, color, visited = new Set()) {
+                const key = `${row}-${col}`;
+                if (visited.has(key) || 
+                    row < 0 || row >= this.rows || 
+                    col < 0 || col >= this.cols || 
+                    this.board[row][col] !== color) {
+                    return [];
+                }
+
+                visited.add(key);
+                const connected = [{ row, col }];
+
+                // Check all 4 directions
+                const directions = [[-1, 0], [1, 0], [0, -1], [0, 1]];
+                for (const [dRow, dCol] of directions) {
+                    connected.push(...this.findConnectedBlocks(row + dRow, col + dCol, color, visited));
+                }
+
+                return connected;
+            }
+
+            showSelectedBlocks(blocks) {
+                // Clear previous selections
+                document.querySelectorAll('.block.selected').forEach(block => {
+                    block.classList.remove('selected');
+                });
+
+                // Highlight new selection
+                blocks.forEach(({ row, col }) => {
+                    const block = document.querySelector(`[data-row="${row}"][data-col="${col}"]`);
+                    if (block) block.classList.add('selected');
+                });
+
+                // Clear selection after a short delay
+                setTimeout(() => {
+                    document.querySelectorAll('.block.selected').forEach(block => {
+                        block.classList.remove('selected');
+                    });
+                }, 1000);
+            }
+
+            eliminateBlocks(blocks) {
+                blocks.forEach(({ row, col }) => {
+                    this.board[row][col] = null;
+                });
+            }
+
+            dropBlocks() {
+                for (let col = 0; col < this.cols; col++) {
+                    // Collect all non-null blocks in this column
+                    const column = [];
+                    for (let row = this.rows - 1; row >= 0; row--) {
+                        if (this.board[row][col] !== null) {
+                            column.push(this.board[row][col]);
+                        }
+                    }
+
+                    // Clear the column
+                    for (let row = 0; row < this.rows; row++) {
+                        this.board[row][col] = null;
+                    }
+
+                    // Place blocks at the bottom
+                    for (let i = 0; i < column.length; i++) {
+                        this.board[this.rows - 1 - i][col] = column[i];
+                    }
+                }
+            }
+
+            hasValidMoves() {
+                for (let row = 0; row < this.rows; row++) {
+                    for (let col = 0; col < this.cols; col++) {
+                        if (this.board[row][col]) {
+                            const connected = this.findConnectedBlocks(row, col, this.board[row][col]);
+                            if (connected.length >= 2) {
+                                return true;
+                            }
+                        }
+                    }
+                }
+                return false;
+            }
+
+            updateProgressBar() {
+                const progress = Math.min(100, (this.score / this.targetScore) * 100);
+                document.getElementById('levelProgress').style.width = `${progress}%`;
+            }
+
+            updateUI() {
+                document.getElementById('score').textContent = this.score;
+                document.getElementById('moves').textContent = this.moves;
+                this.updateProgressBar();
+            }
+
+            levelComplete() {
+                // Update UI for level completion
+                document.getElementById('completedLevel').textContent = this.level;
+                document.getElementById('levelScore').textContent = this.score;
+                document.getElementById('levelComplete').style.display = 'flex';
+                
+                // Save highest level reached in session storage
+                const currentHighestLevel = parseInt(sessionStorage.getItem('highestLevel') || '0');
+                if (this.level > currentHighestLevel) {
+                    sessionStorage.setItem('highestLevel', this.level);
+                }
+            }
+
+            levelFailed() {
+                document.getElementById('failedScore').textContent = this.score;
+                document.getElementById('failedTarget').textContent = this.targetScore;
+                document.getElementById('levelFailed').style.display = 'flex';
+            }
+
+            nextLevel() {
+                this.level++;
+                this.score = 0;
+                document.getElementById('levelComplete').style.display = 'none';
+                this.updateDifficulty();
+                this.initBoard();
+            }
+
+            replayLevel() {
+                this.score = 0;
+                document.getElementById('levelFailed').style.display = 'none';
+                this.updateDifficulty();
+                this.initBoard();
+            }
+
+            endGame() {
+                document.getElementById('finalScore').textContent = this.totalScore;
+                document.getElementById('finalLevel').textContent = this.level;
+                document.getElementById('gameOver').style.display = 'flex';
+            }
+
+            restart() {
+                this.level = 1;
+                this.score = 0;
+                this.totalScore = 0;
+                this.colors = [...this.baseColors]; // Reset to base colors
+                document.getElementById('gameOver').style.display = 'none';
+                document.getElementById('levelComplete').style.display = 'none';
+                document.getElementById('levelFailed').style.display = 'none';
+                this.updateDifficulty();
+                this.initBoard();
+            }
+        }
+
+        const game = new BlockGame();
+
+        function startGame() {
+            document.getElementById('startScreen').style.display = 'none';
+            document.getElementById('gameScreen').style.display = 'flex';
+            game.updateDifficulty();
+            game.initBoard();
+        }
+
+        function restartGame() {
+            game.restart();
+        }
+
+        function playAgain() {
+            game.restart();
+        }
+
+        function nextLevel() {
+            game.nextLevel();
+        }
+
+        function replayLevel() {
+            game.replayLevel();
+        }
+
+        // Add system to store highest level in session storage
+        window.addEventListener('load', () => {
+            // Check if there's a saved level
+            const savedLevel = sessionStorage.getItem('highestLevel');
+            if (savedLevel) {
+                game.level = parseInt(savedLevel);
+            }
+        });
+
+        // Handle resize events to maintain block aspect ratio
+        window.addEventListener('resize', () => {
+            // Force redraw of the board to maintain aspect ratio
+            if (document.getElementById('gameScreen').style.display === 'flex') {
+                game.renderBoard();
+            }
+        });
+    </script>
+
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "VideoGame",
+      "name": "Block Blast",
+      "description": "A free color matching puzzle game where you eliminate adjacent blocks of the same color to complete levels and earn high scores.",
+      "genre": ["Puzzle", "Casual", "Strategy"],
+      "gamePlatform": "Web Browser",
+      "applicationCategory": "Game",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock"
+      }
+    }
+    </script>
+</body>
+</html>
