@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Block Blast Blog - Tips, Strategies & Game Updates</title>
+    <meta name="description" content="Read the latest Block Blast game tips, strategies, updates, and puzzle-solving techniques. Stay updated with new features and gameplay improvements.">
+    <meta name="keywords" content="block blast blog, puzzle game tips, block elimination strategies, game updates, puzzle solving">
+    
+    <!-- Open Graph / Social Media Tags -->
+    <meta property="og:title" content="Block Blast Blog - Tips, Strategies & Updates">
+    <meta property="og:description" content="Latest tips, strategies, and updates for the Block Blast puzzle game">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://blockblast.com/images/blog-preview.jpg">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    
+    <style>
+        body {
+            background: linear-gradient(135deg, #a855f7 0%, #8b5cf6 50%, #7c3aed 100%);
+            min-height: 100vh;
+        }
+        
+        .blog-card {
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .category-tag {
+            background: linear-gradient(45deg, #6366f1, #8b5cf6);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .read-time {
+            color: #6b7280;
+            font-size: 0.875rem;
+        }
+        
+        .author-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #f59e0b, #f97316);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="bg-white bg-opacity-90 backdrop-blur-sm shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-4">
+                    <h1 class="text-2xl font-bold gradient-text">🎮 Block Blast</h1>
+                    <span class="text-gray-600">Blog</span>
+                </div>
+                <div class="hidden md:flex space-x-6">
+                    <a href="index.html" class="text-gray-700 hover:text-purple-600 transition-colors">Home</a>
+                    <a href="game.html" class="text-gray-700 hover:text-purple-600 transition-colors">Play Game</a>
+                    <a href="blog.html" class="text-purple-600 font-semibold">Blog</a>
+                    <a href="support.html" class="text-gray-700 hover:text-purple-600 transition-colors">Support</a>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-700 hover:text-purple-600">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <!-- Mobile menu -->
+            <div id="mobile-menu" class="hidden md:hidden pb-4">
+                <a href="index.html" class="block py-2 text-gray-700 hover:text-purple-600">Home</a>
+                <a href="game.html" class="block py-2 text-gray-700 hover:text-purple-600">Play Game</a>
+                <a href="blog.html" class="block py-2 text-purple-600 font-semibold">Blog</a>
+                <a href="support.html" class="block py-2 text-gray-700 hover:text-purple-600">Support</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="py-20 text-center text-white">
+        <div class="max-w-4xl mx-auto px-4">
+            <h1 class="text-5xl md:text-6xl font-bold mb-6">
+                Block Blast <span class="text-yellow-300">Blog</span>
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 text-purple-100">
+                Master the art of block elimination with our tips, strategies, and game updates
+            </p>
+            <div class="flex flex-wrap justify-center gap-4 text-sm">
+                <span class="category-tag">Strategy Guides</span>
+                <span class="category-tag">Game Updates</span>
+                <span class="category-tag">Tips & Tricks</span>
+                <span class="category-tag">Community</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Post -->
+    <section class="py-16">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="bg-white bg-opacity-95 rounded-2xl shadow-2xl overflow-hidden">
+                <div class="md:flex">
+                    <div class="md:w-1/2">
+                        <div class="h-64 md:h-full bg-gradient-to-br from-purple-400 to-blue-500 flex items-center justify-center">
+                            <div class="text-white text-center">
+                                <div class="text-6xl mb-4">🏆</div>
+                                <h3 class="text-2xl font-bold">Featured Post</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 p-8">
+                        <div class="flex items-center gap-2 mb-4">
+                            <span class="category-tag">Strategy</span>
+                            <span class="read-time">5 min read</span>
+                        </div>
+                        <h2 class="text-3xl font-bold text-gray-900 mb-4">
+                            Master Block Blast: Advanced Strategies for High Scores
+                        </h2>
+                        <p class="text-gray-600 mb-6">
+                            Learn the secret techniques used by top players to achieve massive combos and break through challenging levels. Discover advanced pattern recognition and strategic thinking methods.
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <div class="author-avatar">BG</div>
+                                <div>
+                                    <p class="font-semibold text-gray-900">Block Gamer</p>
+                                    <p class="text-sm text-gray-500">December 28, 2024</p>
+                                </div>
+                            </div>
+                            <button onclick="openBlogPost('featured')" class="bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded-lg transition-colors">
+                                Read More
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Posts Grid -->
+    <section class="py-16">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-4xl font-bold text-white text-center mb-12">Latest Posts</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Blog Post 1 -->
+                <article class="blog-card bg-white bg-opacity-95 rounded-xl shadow-lg overflow-hidden">
+                    <div class="h-48 bg-gradient-to-br from-green-400 to-emerald-500 flex items-center justify-center">
+                        <div class="text-white text-5xl">🎯</div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="category-tag">Tips</span>
+                            <span class="read-time">3 min read</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">
+                            10 Essential Tips for Block Blast Beginners
+                        </h3>
+                        <p class="text-gray-600 mb-4">
+                            New to Block Blast? Start your journey with these fundamental tips that will help you understand the game mechanics and improve your scores quickly.
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <div class="author-avatar">PT</div>
+                                <div>
+                                    <p class="text-sm font-semibold text-gray-700">Puzzle Tutor</p>
+                                    <p class="text-xs text-gray-500">Dec 26, 2024</p>
+                                </div>
+                            </div>
+                            <button onclick="openBlogPost('tips')" class="text-purple-600 hover:text-purple-700 font-semibold">
+                                Read →
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Blog Post 2 -->
+                <article class="blog-card bg-white bg-opacity-95 rounded-xl shadow-lg overflow-hidden">
+                    <div class="h-48 bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center">
+                        <div class="text-white text-5xl">🔥</div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="category-tag">Updates</span>
+                            <span class="read-time">2 min read</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">
+                            New Sound Effects and Animations Update!
+                        </h3>
+                        <p class="text-gray-600 mb-4">
+                            Experience Block Blast like never before with our latest update featuring immersive sound effects, particle animations, and visual feedback.
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <div class="author-avatar">DT</div>
+                                <div>
+                                    <p class="text-sm font-semibold text-gray-700">Dev Team</p>
+                                    <p class="text-xs text-gray-500">Dec 25, 2024</p>
+                                </div>
+                            </div>
+                            <button onclick="openBlogPost('updates')" class="text-purple-600 hover:text-purple-700 font-semibold">
+                                Read →
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Blog Post 3 -->
+                <article class="blog-card bg-white bg-opacity-95 rounded-xl shadow-lg overflow-hidden">
+                    <div class="h-48 bg-gradient-to-br from-blue-400 to-indigo-500 flex items-center justify-center">
+                        <div class="text-white text-5xl">🧠</div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="category-tag">Strategy</span>
+                            <span class="read-time">4 min read</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">
+                            Psychology of Puzzle Games: Why Block Blast is Addictive
+                        </h3>
+                        <p class="text-gray-600 mb-4">
+                            Explore the psychological elements that make Block Blast so engaging and learn how understanding these can improve your gameplay.
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <div class="author-avatar">GP</div>
+                                <div>
+                                    <p class="text-sm font-semibold text-gray-700">Game Psychologist</p>
+                                    <p class="text-xs text-gray-500">Dec 24, 2024</p>
+                                </div>
+                            </div>
+                            <button onclick="openBlogPost('psychology')" class="text-purple-600 hover:text-purple-700 font-semibold">
+                                Read →
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Blog Post 4 -->
+                <article class="blog-card bg-white bg-opacity-95 rounded-xl shadow-lg overflow-hidden">
+                    <div class="h-48 bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center">
+                        <div class="text-white text-5xl">⚡</div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="category-tag">Techniques</span>
+                            <span class="read-time">6 min read</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">
+                            Speed vs Strategy: Finding Your Optimal Play Style
+                        </h3>
+                        <p class="text-gray-600 mb-4">
+                            Should you play fast or think carefully? Discover the pros and cons of different approaches and find your perfect balance.
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <div class="author-avatar">ST</div>
+                                <div>
+                                    <p class="text-sm font-semibold text-gray-700">Strategy Tutor</p>
+                                    <p class="text-xs text-gray-500">Dec 22, 2024</p>
+                                </div>
+                            </div>
+                            <button onclick="openBlogPost('speed')" class="text-purple-600 hover:text-purple-700 font-semibold">
+                                Read →
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Blog Post 5 -->
+                <article class="blog-card bg-white bg-opacity-95 rounded-xl shadow-lg overflow-hidden">
+                    <div class="h-48 bg-gradient-to-br from-pink-400 to-purple-500 flex items-center justify-center">
+                        <div class="text-white text-5xl">🌟</div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="category-tag">Community</span>
+                            <span class="read-time">3 min read</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">
+                            Player Spotlight: Amazing Community Achievements
+                        </h3>
+                        <p class="text-gray-600 mb-4">
+                            Celebrating our top players and their incredible achievements. Get inspired by their strategies and dedication.
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <div class="author-avatar">CM</div>
+                                <div>
+                                    <p class="text-sm font-semibold text-gray-700">Community Manager</p>
+                                    <p class="text-xs text-gray-500">Dec 20, 2024</p>
+                                </div>
+                            </div>
+                            <button onclick="openBlogPost('community')" class="text-purple-600 hover:text-purple-700 font-semibold">
+                                Read →
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Blog Post 6 -->
+                <article class="blog-card bg-white bg-opacity-95 rounded-xl shadow-lg overflow-hidden">
+                    <div class="h-48 bg-gradient-to-br from-teal-400 to-cyan-500 flex items-center justify-center">
+                        <div class="text-white text-5xl">📱</div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="category-tag">Mobile</span>
+                            <span class="read-time">3 min read</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">
+                            Mobile Optimization: Perfect Touch Experience
+                        </h3>
+                        <p class="text-gray-600 mb-4">
+                            Learn about our mobile optimization efforts and discover tips for the best Block Blast experience on your phone or tablet.
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <div class="author-avatar">MD</div>
+                                <div>
+                                    <p class="text-sm font-semibold text-gray-700">Mobile Dev</p>
+                                    <p class="text-xs text-gray-500">Dec 18, 2024</p>
+                                </div>
+                            </div>
+                            <button onclick="openBlogPost('mobile')" class="text-purple-600 hover:text-purple-700 font-semibold">
+                                Read →
+                            </button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Signup -->
+    <section class="py-16">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="bg-white bg-opacity-95 rounded-2xl shadow-2xl p-8 text-center">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Stay Updated</h2>
+                <p class="text-gray-600 mb-6">
+                    Get the latest Block Blast tips, strategies, and updates delivered to your inbox
+                </p>
+                <div class="max-w-md mx-auto flex gap-3">
+                    <input 
+                        type="email" 
+                        placeholder="Enter your email" 
+                        class="flex-1 px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                    >
+                    <button class="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg transition-colors">
+                        Subscribe
+                    </button>
+                </div>
+                <p class="text-sm text-gray-500 mt-3">
+                    No spam, unsubscribe anytime
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black bg-opacity-20 text-white py-12">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">🎮 Block Blast</h3>
+                    <p class="text-purple-200">
+                        The most addictive block elimination puzzle game. Challenge your mind and have fun!
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-3">Game</h4>
+                    <ul class="space-y-2 text-purple-200">
+                        <li><a href="index.html" class="hover:text-white transition-colors">Home</a></li>
+                        <li><a href="game.html" class="hover:text-white transition-colors">Play Now</a></li>
+                        <li><a href="blog.html" class="hover:text-white transition-colors">Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-3">Support</h4>
+                    <ul class="space-y-2 text-purple-200">
+                        <li><a href="support.html" class="hover:text-white transition-colors">Help Center</a></li>
+                        <li><a href="privacy-policy.html" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="terms-of-service.html" class="hover:text-white transition-colors">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-3">Connect</h4>
+                    <ul class="space-y-2 text-purple-200">
+                        <li><a href="#" class="hover:text-white transition-colors">Discord Community</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Twitter</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">YouTube</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-purple-500 border-opacity-30 mt-8 pt-8 text-center text-purple-200">
+                <p>&copy; 2024 Block Blast. Made with ❤️ for puzzle game enthusiasts.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Blog Post Modal -->
+    <div id="blog-modal" class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm hidden items-center justify-center z-50 p-4">
+        <div class="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6 border-b border-gray-200">
+                <div class="flex justify-between items-center">
+                    <h2 id="modal-title" class="text-2xl font-bold text-gray-900"></h2>
+                    <button onclick="closeBlogModal()" class="text-gray-500 hover:text-gray-700">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div id="modal-content" class="p-6">
+                <!-- Blog content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Blog post content
+        const blogPosts = {
+            featured: {
+                title: "Master Block Blast: Advanced Strategies for High Scores",
+                content: `
+                    <div class="prose max-w-none">
+                        <h3 class="text-xl font-bold mb-4">Introduction</h3>
+                        <p class="mb-4">Ready to take your Block Blast skills to the next level? This comprehensive guide covers advanced strategies that top players use to achieve massive scores and dominate the leaderboards.</p>
+                        
+                        <h3 class="text-xl font-bold mb-4">1. Pattern Recognition</h3>
+                        <p class="mb-4">The key to high scores lies in quickly identifying elimination opportunities. Train your eye to spot:</p>
+                        <ul class="list-disc list-inside mb-4 space-y-2">
+                            <li>Large connected groups of the same color</li>
+                            <li>Potential chain reactions after elimination</li>
+                            <li>Blocks that will fall into favorable positions</li>
+                        </ul>
+                        
+                        <h3 class="text-xl font-bold mb-4">2. The Power of Patience</h3>
+                        <p class="mb-4">Don't rush into eliminating small groups. Sometimes waiting for the perfect moment can create much larger elimination opportunities. Look for setups that will cascade into multiple eliminations.</p>
+                        
+                        <h3 class="text-xl font-bold mb-4">3. Strategic Positioning</h3>
+                        <p class="mb-4">Think several moves ahead. Consider how eliminating one group will affect the entire board layout. Sometimes eliminating a smaller group first can set up a massive combo later.</p>
+                        
+                        <h3 class="text-xl font-bold mb-4">4. Combo Multipliers</h3>
+                        <p class="mb-4">The scoring system rewards larger eliminations exponentially. A group of 8 blocks gives you 640 points (8² × 10), while two groups of 4 blocks only give you 320 points total (4² × 10 × 2).</p>
+                        
+                        <h3 class="text-xl font-bold mb-4">Conclusion</h3>
+                        <p class="mb-4">Mastering Block Blast requires patience, pattern recognition, and strategic thinking. Practice these techniques and watch your scores soar!</p>
+                    </div>
+                `
+            },
+            tips: {
+                title: "10 Essential Tips for Block Blast Beginners",
+                content: `
+                    <div class="prose max-w-none">
+                        <p class="mb-6">Starting your Block Blast journey? These fundamental tips will help you understand the game mechanics and improve quickly.</p>
+                        
+                        <div class="space-y-6">
+                            <div>
+                                <h4 class="text-lg font-semibold mb-2">1. Start with the Basics</h4>
+                                <p>Focus on eliminating groups of 2-3 blocks to get comfortable with the mechanics before attempting larger combinations.</p>
+                            </div>
+                            
+                            <div>
+                                <h4 class="text-lg font-semibold mb-2">2. Understand the Scoring</h4>
+                                <p>Your score is calculated as (number of blocks)² × 10. This means larger groups give exponentially more points!</p>
+                            </div>
+                            
+                            <div>
+                                <h4 class="text-lg font-semibold mb-2">3. Plan Your Moves</h4>
+                                <p>Take time to survey the board before making your next move. Good planning beats quick reactions.</p>
+                            </div>
+                            
+                            <div>
+                                <h4 class="text-lg font-semibold mb-2">4. Watch the Gravity</h4>
+                                <p>Remember that blocks fall down after elimination. Use this to your advantage to create new patterns.</p>
+                            </div>
+                            
+                            <div>
+                                <h4 class="text-lg font-semibold mb-2">5. Don't Rush</h4>
+                                <p>You have limited moves, so make each one count. It's better to eliminate one large group than several small ones.</p>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            updates: {
+                title: "New Sound Effects and Animations Update!",
+                content: `
+                    <div class="prose max-w-none">
+                        <p class="mb-6">We're excited to announce our latest update that brings Block Blast to life with immersive audio and visual feedback!</p>
+                        
+                        <h3 class="text-xl font-bold mb-4">🔊 Sound Effects</h3>
+                        <ul class="list-disc list-inside mb-6 space-y-2">
+                            <li>Different tones for different elimination sizes</li>
+                            <li>Celebratory sounds for level completion</li>
+                            <li>Subtle hover effects for better interaction</li>
+                            <li>Warning sounds for invalid moves</li>
+                        </ul>
+                        
+                        <h3 class="text-xl font-bold mb-4">✨ Visual Effects</h3>
+                        <ul class="list-disc list-inside mb-6 space-y-2">
+                            <li>Particle explosions when blocks are eliminated</li>
+                            <li>Smooth scaling and rotation animations</li>
+                            <li>Score popups with combo indicators</li>
+                            <li>Enhanced block selection feedback</li>
+                        </ul>
+                        
+                        <h3 class="text-xl font-bold mb-4">🎮 Enhanced Experience</h3>
+                        <p class="mb-4">These updates make every elimination feel satisfying and rewarding. The audio cues help you understand your performance, while the visual effects add excitement to every move.</p>
+                        
+                        <p class="mb-4">Try the updated game now and experience Block Blast like never before!</p>
+                    </div>
+                `
+            },
+            psychology: {
+                title: "Psychology of Puzzle Games: Why Block Blast is Addictive",
+                content: `
+                    <div class="prose max-w-none">
+                        <p class="mb-6">Ever wondered why Block Blast is so engaging? Let's explore the psychological elements that make puzzle games irresistible.</p>
+                        
+                        <h3 class="text-xl font-bold mb-4">🧠 The Reward System</h3>
+                        <p class="mb-4">Block Blast uses variable ratio reinforcement - you never know exactly when you'll get a big combo, which keeps your brain engaged and wanting more.</p>
+                        
+                        <h3 class="text-xl font-bold mb-4">🎯 Clear Goals</h3>
+                        <p class="mb-4">Each level has a specific target score, giving you a clear objective to work towards. This creates a sense of purpose and achievement.</p>
+                        
+                        <h3 class="text-xl font-bold mb-4">⚡ Flow State</h3>
+                        <p class="mb-4">The game's difficulty progression keeps you in the optimal challenge zone - not too easy to be boring, not too hard to be frustrating.</p>
+                        
+                        <h3 class="text-xl font-bold mb-4">🔄 Immediate Feedback</h3>
+                        <p class="mb-4">Every action in Block Blast provides instant visual and audio feedback, satisfying your brain's need for immediate response to actions.</p>
+                        
+                        <h3 class="text-xl font-bold mb-4">🏆 Mastery and Progression</h3>
+                        <p class="mb-4">The level system provides a sense of progression and mastery, appealing to our natural desire to improve and achieve.</p>
+                    </div>
+                `
+            },
+            speed: {
+                title: "Speed vs Strategy: Finding Your Optimal Play Style",
+                content: `
+                    <div class="prose max-w-none">
+                        <p class="mb-6">Should you play fast and trust your instincts, or take time to plan each move carefully? Both approaches have their merits.</p>
+                        
+                        <h3 class="text-xl font-bold mb-4">⚡ The Speed Approach</h3>
+                        <div class="mb-6">
+                            <h4 class="font-semibold mb-2">Advantages:</h4>
+                            <ul class="list-disc list-inside mb-4 space-y-1">
+                                <li>Develops intuitive pattern recognition</li>
+                                <li>Keeps you in flow state</li>
+                                <li>Less overthinking and hesitation</li>
+                            </ul>
+                            <h4 class="font-semibold mb-2">Disadvantages:</h4>
+                            <ul class="list-disc list-inside space-y-1">
+                                <li>May miss optimal combinations</li>
+                                <li>Could waste moves on poor choices</li>
+                            </ul>
+                        </div>
+                        
+                        <h3 class="text-xl font-bold mb-4">🤔 The Strategic Approach</h3>
+                        <div class="mb-6">
+                            <h4 class="font-semibold mb-2">Advantages:</h4>
+                            <ul class="list-disc list-inside mb-4 space-y-1">
+                                <li>Maximizes each move's potential</li>
+                                <li>Better long-term planning</li>
+                                <li>Higher average scores</li>
+                            </ul>
+                            <h4 class="font-semibold mb-2">Disadvantages:</h4>
+                            <ul class="list-disc list-inside space-y-1">
+                                <li>Can lead to analysis paralysis</li>
+                                <li>May reduce enjoyment</li>
+                            </ul>
+                        </div>
+                        
+                        <h3 class="text-xl font-bold mb-4">🎯 Finding Your Balance</h3>
+                        <p class="mb-4">The best players combine both approaches: quick pattern recognition with strategic planning. Start fast to identify opportunities, then slow down to optimize your choice.</p>
+                    </div>
+                `
+            },
+            community: {
+                title: "Player Spotlight: Amazing Community Achievements",
+                content: `
+                    <div class="prose max-w-none">
+                        <p class="mb-6">Our Block Blast community continues to amaze us with incredible achievements and creative strategies!</p>
+                        
+                        <h3 class="text-xl font-bold mb-4">🏆 Top Players This Month</h3>
+                        <div class="space-y-4 mb-6">
+                            <div class="bg-gradient-to-r from-yellow-50 to-yellow-100 p-4 rounded-lg">
+                                <h4 class="font-bold">BlockMaster2024</h4>
+                                <p>Achieved an incredible 50,000 point game with a 12-block elimination combo!</p>
+                            </div>
+                            <div class="bg-gradient-to-r from-blue-50 to-blue-100 p-4 rounded-lg">
+                                <h4 class="font-bold">PuzzleQueen</h4>
+                                <p>Reached level 25 using only strategic, planned moves - impressive patience!</p>
+                            </div>
+                            <div class="bg-gradient-to-r from-green-50 to-green-100 p-4 rounded-lg">
+                                <h4 class="font-bold">SpeedDemon</h4>
+                                <p>Completed 10 levels in under 5 minutes with consistently high scores.</p>
+                            </div>
+                        </div>
+                        
+                        <h3 class="text-xl font-bold mb-4">💡 Community Tips</h3>
+                        <p class="mb-4">Our players have shared some amazing strategies:</p>
+                        <ul class="list-disc list-inside mb-6 space-y-2">
+                            <li>"Always look for the largest group first, even if it means skipping smaller ones" - StrategyGuru</li>
+                            <li>"The corners are your friends - blocks settle there and create opportunities" - CornerCrusher</li>
+                            <li>"Count your moves and save the big eliminations for when you're running low" - MoveCounter</li>
+                        </ul>
+                        
+                        <h3 class="text-xl font-bold mb-4">🎉 Join Our Community</h3>
+                        <p class="mb-4">Want to share your achievements or learn from other players? Join our growing community and become part of the Block Blast family!</p>
+                    </div>
+                `
+            },
+            mobile: {
+                title: "Mobile Optimization: Perfect Touch Experience",
+                content: `
+                    <div class="prose max-w-none">
+                        <p class="mb-6">We've worked hard to make Block Blast feel perfect on mobile devices. Here's what we've optimized for the best touch experience.</p>
+                        
+                        <h3 class="text-xl font-bold mb-4">📱 Touch-First Design</h3>
+                        <ul class="list-disc list-inside mb-6 space-y-2">
+                            <li>Larger block sizes on mobile for easy tapping</li>
+                            <li>Optimized touch event handling for responsive feedback</li>
+                            <li>Prevented accidental zooming and scrolling</li>
+                            <li>Enhanced visual feedback for touch interactions</li>
+                        </ul>
+                        
+                        <h3 class="text-xl font-bold mb-4">🎮 Mobile-Specific Features</h3>
+                        <ul class="list-disc list-inside mb-6 space-y-2">
+                            <li>Automatic screen orientation support</li>
+                            <li>Full-screen gameplay experience</li>
+                            <li>Optimized battery usage</li>
+                            <li>Smooth 60fps animations on supported devices</li>
+                        </ul>
+                        
+                        <h3 class="text-xl font-bold mb-4">💡 Mobile Playing Tips</h3>
+                        <ul class="list-disc list-inside mb-6 space-y-2">
+                            <li>Use your thumb for quick taps and your index finger for precision</li>
+                            <li>Take advantage of the larger touch targets on mobile</li>
+                            <li>Rotate your device to find your preferred orientation</li>
+                            <li>Enable full-screen mode for immersive gameplay</li>
+                        </ul>
+                        
+                        <h3 class="text-xl font-bold mb-4">🔧 Performance Tips</h3>
+                        <p class="mb-4">For the best mobile experience:</p>
+                        <ul class="list-disc list-inside space-y-2">
+                            <li>Close other apps to free up memory</li>
+                            <li>Ensure good internet connection for fast loading</li>
+                            <li>Keep your browser updated</li>
+                            <li>Clear browser cache occasionally</li>
+                        </ul>
+                    </div>
+                `
+            }
+        };
+
+        function openBlogPost(postId) {
+            const post = blogPosts[postId];
+            if (post) {
+                document.getElementById('modal-title').textContent = post.title;
+                document.getElementById('modal-content').innerHTML = post.content;
+                document.getElementById('blog-modal').classList.remove('hidden');
+                document.getElementById('blog-modal').classList.add('flex');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeBlogModal() {
+            document.getElementById('blog-modal').classList.add('hidden');
+            document.getElementById('blog-modal').classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('blog-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeBlogModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeBlogModal();
+            }
+        });
+    </script>
+</body>
+</html>
